@@ -1,0 +1,186 @@
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ========== WHITE CONTAINER CARD ========== */
+.card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px; /* Rounded like your screenshot */
+  padding: 30px 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+  text-align: center;
+}
+
+/* ========== PAGE 1: WELCOME ========== */
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+  object-fit: contain;
+  border-radius :10px ;
+}
+
+h1.blue-title {
+  color: #00b4d8; /* Bitget blue */
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+p.desc, p.welcome {
+  color: #000;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* ========== PAGE 2: INFO BOX ========== */
+.info-box {
+  background: #e9e9e9;
+  border-radius: 12px;
+  padding: 18px 15px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.info-box p {
+  color: #000;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.info-box a {
+  color: #e60000;
+  text-decoration: underline;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.info-box h2 {
+  color: #00b4d8;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* ========== PAGE 3: HEADER ========== */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: #00b4d8;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.help-link {
+  display: block;
+  text-align: right;
+  color: #00b4d8;
+  text-decoration: underline;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: -5px;
+}
+
+/* ========== FORM ELEMENTS ========== */
+form { text-align: left; }
+
+form label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+form label.red { color: #e60000; font-weight: 700; }
+.required { color: #e60000; margin-right: 3px; }
+
+form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f5f5f5;
+  font-size: 15px;
+  outline: none;
+}
+form input:focus { border-color: #00b4d8; background: #fff; }
+
+/* Page 3 notes */
+.note { text-align: center; color: #000; font-size: 14px; margin: 20px 0 10px 0; }
+.warning { text-align: center; color: #e60000; font-size: 14px; font-weight: 700; margin-bottom: 15px; }
+
+/* Attest */
+.attest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #006400;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.attest input { width: 18px; height: 18px; accent-color: #00b4d8; }
+
+/* ========== BUTTONS ========== */
+.btn, .btn-submit {
+  width: 100%;
+  background: #00b4d8;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 12px; /* Rounded like screenshot */
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 25px;
+}
+.btn:hover, .btn-submit:hover { background: #009ac1; }
+
+.btn-row { display: flex; justify-content: flex-end; margin-top: 15px; }
+.btn-next {
+  width: 25%;
+  background: #00b4d8;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-next:hover { background: #009ac1; }
+
+/* ========== DESKTOP CENTERING ========== */
+@media (min-width: 768px) {
+  body { padding: 40px; }
+  .card { max-width: 420px; }
+}
